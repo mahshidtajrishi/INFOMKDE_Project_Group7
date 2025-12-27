@@ -1,0 +1,221 @@
+@prefix cuisine: <http://example.org/cuisine/> .
+@prefix ingredient: <http://example.org/ingredient/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix recipe: <http://example.org/recipe/> .
+@prefix schema1: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+recipe:calories a owl:DatatypeProperty .
+
+recipe:carbohydrates a owl:DatatypeProperty .
+
+recipe:fat a owl:DatatypeProperty .
+
+recipe:hasCuisine a owl:ObjectProperty ;
+    rdfs:domain recipe:Recipe ;
+    rdfs:range recipe:Cuisine .
+
+recipe:hasDiet a owl:ObjectProperty ;
+    rdfs:domain recipe:Recipe ;
+    rdfs:range recipe:Diet .
+
+recipe:hasIngredient a owl:ObjectProperty ;
+    rdfs:domain recipe:Recipe ;
+    rdfs:range recipe:Ingredient .
+
+recipe:hasNutrition a owl:ObjectProperty ;
+    rdfs:domain recipe:Recipe ;
+    rdfs:range recipe:NutritionInfo .
+
+recipe:ingredientAmount a owl:DatatypeProperty .
+
+recipe:ingredientUnit a owl:DatatypeProperty .
+
+recipe:protein a owl:DatatypeProperty .
+
+recipe:readyInMinutes a owl:DatatypeProperty .
+
+recipe:recipe_715538 a recipe:Recipe ;
+    rdfs:label "Bruschetta Style Pork & Pasta"@en ;
+    recipe:hasCuisine cuisine:italian,
+        cuisine:mediterranean ;
+    recipe:hasIngredient ingredient:ing_10010219,
+        ingredient:ing_11215,
+        ingredient:ing_11529,
+        ingredient:ing_20420,
+        ingredient:ing_2044 ;
+    recipe:hasNutrition recipe:nutrition_715538 ;
+    recipe:ingredientUsage [ recipe:ingredientAmount "2.0"^^xsd:float ;
+            recipe:ingredientUnit "cloves"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_11215 ],
+        [ recipe:ingredientAmount "3.0"^^xsd:float ;
+            recipe:ingredientUnit "medium"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_11529 ],
+        [ recipe:ingredientAmount "12.0"^^xsd:float ;
+            recipe:ingredientUnit "oz"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_20420 ],
+        [ recipe:ingredientAmount "0.25"^^xsd:float ;
+            recipe:ingredientUnit "cup"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_2044 ],
+        [ recipe:ingredientAmount "4.0"^^xsd:float ;
+            recipe:ingredientUnit "pieces"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_10010219 ] ;
+    recipe:readyInMinutes 35 ;
+    recipe:servings 4 ;
+    recipe:title "Bruschetta Style Pork & Pasta"^^xsd:string ;
+    schema1:image <https://spoonacular.com/recipeImages/715538-312x231.jpg> .
+
+recipe:recipe_716429 a recipe:Recipe ;
+    rdfs:label "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs"@en ;
+    recipe:hasCuisine cuisine:italian ;
+    recipe:hasDiet recipe:diet_vegetarian ;
+    recipe:hasIngredient ingredient:ing_1001,
+        ingredient:ing_10011135,
+        ingredient:ing_11215,
+        ingredient:ing_20420 ;
+    recipe:hasNutrition recipe:nutrition_716429 ;
+    recipe:ingredientUsage [ recipe:ingredientAmount "2.0"^^xsd:float ;
+            recipe:ingredientUnit "cups"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_10011135 ],
+        [ recipe:ingredientAmount "8.0"^^xsd:float ;
+            recipe:ingredientUnit "oz"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_20420 ],
+        [ recipe:ingredientAmount "3.0"^^xsd:float ;
+            recipe:ingredientUnit "cloves"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_11215 ],
+        [ recipe:ingredientAmount "1.0"^^xsd:float ;
+            recipe:ingredientUnit "tbsp"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_1001 ] ;
+    recipe:readyInMinutes 45 ;
+    recipe:servings 2 ;
+    recipe:title "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs"^^xsd:string ;
+    schema1:image <https://spoonacular.com/recipeImages/716429-312x231.jpg> .
+
+recipe:recipe_782601 a recipe:Recipe ;
+    rdfs:label "Red Kidney Bean Jambalaya"@en ;
+    recipe:hasCuisine cuisine:american,
+        cuisine:cajun ;
+    recipe:hasDiet recipe:diet_gluten_free,
+        recipe:diet_vegan ;
+    recipe:hasIngredient ingredient:ing_11143,
+        ingredient:ing_11282,
+        ingredient:ing_11333,
+        ingredient:ing_16033,
+        ingredient:ing_20444 ;
+    recipe:hasNutrition recipe:nutrition_782601 ;
+    recipe:ingredientUsage [ recipe:ingredientAmount "2.0"^^xsd:float ;
+            recipe:ingredientUnit "stalks"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_11143 ],
+        [ recipe:ingredientAmount "1.0"^^xsd:float ;
+            recipe:ingredientUnit "large"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_11282 ],
+        [ recipe:ingredientAmount "2.0"^^xsd:float ;
+            recipe:ingredientUnit "medium"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_11333 ],
+        [ recipe:ingredientAmount "1.5"^^xsd:float ;
+            recipe:ingredientUnit "cups"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_20444 ],
+        [ recipe:ingredientAmount "2.0"^^xsd:float ;
+            recipe:ingredientUnit "cups"^^xsd:string ;
+            recipe:usesIngredient ingredient:ing_16033 ] ;
+    recipe:readyInMinutes 60 ;
+    recipe:servings 6 ;
+    recipe:title "Red Kidney Bean Jambalaya"^^xsd:string ;
+    schema1:image <https://spoonacular.com/recipeImages/782601-312x231.jpg> .
+
+recipe:servings a owl:DatatypeProperty .
+
+recipe:title a owl:DatatypeProperty .
+
+cuisine:american a recipe:Cuisine ;
+    rdfs:label "American"@en .
+
+cuisine:cajun a recipe:Cuisine ;
+    rdfs:label "Cajun"@en .
+
+cuisine:mediterranean a recipe:Cuisine ;
+    rdfs:label "Mediterranean"@en .
+
+recipe:diet_gluten_free a recipe:Diet ;
+    rdfs:label "gluten free"@en .
+
+recipe:diet_vegan a recipe:Diet ;
+    rdfs:label "vegan"@en .
+
+recipe:diet_vegetarian a recipe:Diet ;
+    rdfs:label "vegetarian"@en .
+
+recipe:nutrition_715538 a recipe:NutritionInfo ;
+    recipe:calories "521.0"^^xsd:float ;
+    recipe:carbohydrates "69.0"^^xsd:float ;
+    recipe:fat "12.0"^^xsd:float ;
+    recipe:protein "35.0"^^xsd:float .
+
+recipe:nutrition_716429 a recipe:NutritionInfo ;
+    recipe:calories "584.0"^^xsd:float ;
+    recipe:carbohydrates "84.0"^^xsd:float ;
+    recipe:fat "20.0"^^xsd:float ;
+    recipe:protein "19.0"^^xsd:float .
+
+recipe:nutrition_782601 a recipe:NutritionInfo ;
+    recipe:calories "312.0"^^xsd:float ;
+    recipe:carbohydrates "62.0"^^xsd:float ;
+    recipe:fat "2.0"^^xsd:float ;
+    recipe:protein "12.0"^^xsd:float .
+
+cuisine:italian a recipe:Cuisine ;
+    rdfs:label "Italian"@en .
+
+ingredient:ing_1001 a recipe:Ingredient ;
+    rdfs:label "butter"@en .
+
+ingredient:ing_10010219 a recipe:Ingredient ;
+    rdfs:label "pork chops"@en .
+
+ingredient:ing_10011135 a recipe:Ingredient ;
+    rdfs:label "cauliflower"@en .
+
+ingredient:ing_11143 a recipe:Ingredient ;
+    rdfs:label "celery"@en .
+
+ingredient:ing_11282 a recipe:Ingredient ;
+    rdfs:label "onion"@en .
+
+ingredient:ing_11333 a recipe:Ingredient ;
+    rdfs:label "bell pepper"@en .
+
+ingredient:ing_11529 a recipe:Ingredient ;
+    rdfs:label "tomato"@en .
+
+ingredient:ing_16033 a recipe:Ingredient ;
+    rdfs:label "red kidney beans"@en .
+
+ingredient:ing_2044 a recipe:Ingredient ;
+    rdfs:label "basil"@en .
+
+ingredient:ing_20444 a recipe:Ingredient ;
+    rdfs:label "rice"@en .
+
+ingredient:ing_11215 a recipe:Ingredient ;
+    rdfs:label "garlic"@en .
+
+ingredient:ing_20420 a recipe:Ingredient ;
+    rdfs:label "pasta"@en .
+
+recipe:Diet a owl:Class ;
+    rdfs:label "Diet"@en .
+
+recipe:NutritionInfo a owl:Class ;
+    rdfs:label "Nutrition Information"@en .
+
+recipe:Cuisine a owl:Class ;
+    rdfs:label "Cuisine"@en .
+
+recipe:Recipe a owl:Class ;
+    rdfs:label "Recipe"@en ;
+    rdfs:comment "A food recipe with ingredients and instructions"@en .
+
+recipe:Ingredient a owl:Class ;
+    rdfs:label "Ingredient"@en .
+

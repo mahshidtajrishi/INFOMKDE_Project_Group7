@@ -1,0 +1,149 @@
+{
+  "results": [
+    {
+      "id": 716429,
+      "title": "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
+      "image": "https://spoonacular.com/recipeImages/716429-312x231.jpg",
+      "readyInMinutes": 45,
+      "servings": 2,
+      "cuisines": ["Italian"],
+      "dishTypes": ["lunch", "main course", "dinner"],
+      "diets": ["vegetarian"],
+      "extendedIngredients": [
+        {
+          "id": 1001,
+          "name": "butter",
+          "amount": 1.0,
+          "unit": "tbsp"
+        },
+        {
+          "id": 10011135,
+          "name": "cauliflower",
+          "amount": 2.0,
+          "unit": "cups"
+        },
+        {
+          "id": 11215,
+          "name": "garlic",
+          "amount": 3.0,
+          "unit": "cloves"
+        },
+        {
+          "id": 20420,
+          "name": "pasta",
+          "amount": 8.0,
+          "unit": "oz"
+        }
+      ],
+      "nutrition": {
+        "nutrients": [
+          {"name": "Calories", "amount": 584.0, "unit": "kcal"},
+          {"name": "Fat", "amount": 20.0, "unit": "g"},
+          {"name": "Carbohydrates", "amount": 84.0, "unit": "g"},
+          {"name": "Protein", "amount": 19.0, "unit": "g"}
+        ]
+      }
+    },
+    {
+      "id": 715538,
+      "title": "Bruschetta Style Pork & Pasta",
+      "image": "https://spoonacular.com/recipeImages/715538-312x231.jpg",
+      "readyInMinutes": 35,
+      "servings": 4,
+      "cuisines": ["Italian", "Mediterranean"],
+      "dishTypes": ["lunch", "main course", "dinner"],
+      "diets": [],
+      "extendedIngredients": [
+        {
+          "id": 10010219,
+          "name": "pork chops",
+          "amount": 4.0,
+          "unit": "pieces"
+        },
+        {
+          "id": 11529,
+          "name": "tomato",
+          "amount": 3.0,
+          "unit": "medium"
+        },
+        {
+          "id": 11215,
+          "name": "garlic",
+          "amount": 2.0,
+          "unit": "cloves"
+        },
+        {
+          "id": 20420,
+          "name": "pasta",
+          "amount": 12.0,
+          "unit": "oz"
+        },
+        {
+          "id": 2044,
+          "name": "basil",
+          "amount": 0.25,
+          "unit": "cup"
+        }
+      ],
+      "nutrition": {
+        "nutrients": [
+          {"name": "Calories", "amount": 521.0, "unit": "kcal"},
+          {"name": "Fat", "amount": 12.0, "unit": "g"},
+          {"name": "Carbohydrates", "amount": 69.0, "unit": "g"},
+          {"name": "Protein", "amount": 35.0, "unit": "g"}
+        ]
+      }
+    },
+    {
+      "id": 782601,
+      "title": "Red Kidney Bean Jambalaya",
+      "image": "https://spoonacular.com/recipeImages/782601-312x231.jpg",
+      "readyInMinutes": 60,
+      "servings": 6,
+      "cuisines": ["American", "Cajun"],
+      "dishTypes": ["lunch", "main course", "dinner"],
+      "diets": ["vegan", "gluten free"],
+      "extendedIngredients": [
+        {
+          "id": 16033,
+          "name": "red kidney beans",
+          "amount": 2.0,
+          "unit": "cups"
+        },
+        {
+          "id": 20444,
+          "name": "rice",
+          "amount": 1.5,
+          "unit": "cups"
+        },
+        {
+          "id": 11282,
+          "name": "onion",
+          "amount": 1.0,
+          "unit": "large"
+        },
+        {
+          "id": 11333,
+          "name": "bell pepper",
+          "amount": 2.0,
+          "unit": "medium"
+        },
+        {
+          "id": 11143,
+          "name": "celery",
+          "amount": 2.0,
+          "unit": "stalks"
+        }
+      ],
+      "nutrition": {
+        "nutrients": [
+          {"name": "Calories", "amount": 312.0, "unit": "kcal"},
+          {"name": "Fat", "amount": 2.0, "unit": "g"},
+          {"name": "Carbohydrates", "amount": 62.0, "unit": "g"},
+          {"name": "Protein", "amount": 12.0, "unit": "g"}
+        ]
+      }
+    }
+  ],
+  "totalResults": 3
+}

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:recipe="http://example.org/recipe/"
+   xmlns:schema1="http://schema.org/"
+>
+  <rdf:Description rdf:about="http://example.org/recipe/recipe_715538">
+    <rdf:type rdf:resource="http://example.org/recipe/Recipe"/>
+    <recipe:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bruschetta Style Pork &amp; Pasta</recipe:title>
+    <rdfs:label xml:lang="en">Bruschetta Style Pork &amp; Pasta</rdfs:label>
+    <recipe:readyInMinutes rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</recipe:readyInMinutes>
+    <recipe:servings rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</recipe:servings>
+    <schema1:image rdf:resource="https://spoonacular.com/recipeImages/715538-312x231.jpg"/>
+    <recipe:hasCuisine rdf:resource="http://example.org/cuisine/italian"/>
+    <recipe:hasCuisine rdf:resource="http://example.org/cuisine/mediterranean"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_10010219"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_11529"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_11215"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_20420"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_2044"/>
+    <recipe:ingredientUsage rdf:nodeID="Nc941573417174b2c907e4a6f4cd1bf8a"/>
+    <recipe:ingredientUsage rdf:nodeID="N8d18a742b12640fd84355b3ac0a022fc"/>
+    <recipe:ingredientUsage rdf:nodeID="N1e9017e56010436a90eb44a925ef36d8"/>
+    <recipe:ingredientUsage rdf:nodeID="Naa2bf781ae66454a925a309543491afa"/>
+    <recipe:ingredientUsage rdf:nodeID="Nbbfb050cf0d242c6bd5f9a224cd64b54"/>
+    <recipe:hasNutrition rdf:resource="http://example.org/recipe/nutrition_715538"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/recipe_782601">
+    <rdf:type rdf:resource="http://example.org/recipe/Recipe"/>
+    <recipe:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Red Kidney Bean Jambalaya</recipe:title>
+    <rdfs:label xml:lang="en">Red Kidney Bean Jambalaya</rdfs:label>
+    <recipe:readyInMinutes rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</recipe:readyInMinutes>
+    <recipe:servings rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</recipe:servings>
+    <schema1:image rdf:resource="https://spoonacular.com/recipeImages/782601-312x231.jpg"/>
+    <recipe:hasCuisine rdf:resource="http://example.org/cuisine/american"/>
+    <recipe:hasCuisine rdf:resource="http://example.org/cuisine/cajun"/>
+    <recipe:hasDiet rdf:resource="http://example.org/recipe/diet_vegan"/>
+    <recipe:hasDiet rdf:resource="http://example.org/recipe/diet_gluten_free"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_16033"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_20444"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_11282"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_11333"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_11143"/>
+    <recipe:ingredientUsage rdf:nodeID="Nede9b4fb373a43279a7d58140116f252"/>
+    <recipe:ingredientUsage rdf:nodeID="Naf44bc0c91d54e46b084859f2e05ca4c"/>
+    <recipe:ingredientUsage rdf:nodeID="N88bd51adf4d04653ab36ee3845f3290f"/>
+    <recipe:ingredientUsage rdf:nodeID="N904fdbe73533472d970ca2373644d181"/>
+    <recipe:ingredientUsage rdf:nodeID="N16ba7da481b346f69d7f7865998eed90"/>
+    <recipe:hasNutrition rdf:resource="http://example.org/recipe/nutrition_782601"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/Recipe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Recipe</rdfs:label>
+    <rdfs:comment xml:lang="en">A food recipe with ingredients and instructions</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_1001">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">butter</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_20420">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">pasta</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nad9acd9d243348eaa7b4e2b354c6ec39">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_20420"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">8.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oz</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/nutrition_782601">
+    <rdf:type rdf:resource="http://example.org/recipe/NutritionInfo"/>
+    <recipe:calories rdf:datatype="http://www.w3.org/2001/XMLSchema#float">312.0</recipe:calories>
+    <recipe:fat rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</recipe:fat>
+    <recipe:carbohydrates rdf:datatype="http://www.w3.org/2001/XMLSchema#float">62.0</recipe:carbohydrates>
+    <recipe:protein rdf:datatype="http://www.w3.org/2001/XMLSchema#float">12.0</recipe:protein>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nade37206d1064210a6bcea7cdede743a">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_11215"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cloves</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/cuisine/cajun">
+    <rdf:type rdf:resource="http://example.org/recipe/Cuisine"/>
+    <rdfs:label xml:lang="en">Cajun</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/ingredientAmount">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/recipe_716429">
+    <rdf:type rdf:resource="http://example.org/recipe/Recipe"/>
+    <recipe:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pasta with Garlic, Scallions, Cauliflower &amp; Breadcrumbs</recipe:title>
+    <rdfs:label xml:lang="en">Pasta with Garlic, Scallions, Cauliflower &amp; Breadcrumbs</rdfs:label>
+    <recipe:readyInMinutes rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</recipe:readyInMinutes>
+    <recipe:servings rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</recipe:servings>
+    <schema1:image rdf:resource="https://spoonacular.com/recipeImages/716429-312x231.jpg"/>
+    <recipe:hasCuisine rdf:resource="http://example.org/cuisine/italian"/>
+    <recipe:hasDiet rdf:resource="http://example.org/recipe/diet_vegetarian"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_1001"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_10011135"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_11215"/>
+    <recipe:hasIngredient rdf:resource="http://example.org/ingredient/ing_20420"/>
+    <recipe:ingredientUsage rdf:nodeID="Nea2b923429d045e09adb51ecd2de8933"/>
+    <recipe:ingredientUsage rdf:nodeID="N3e64395fca8d4ba7b4b66366bc96c8f2"/>
+    <recipe:ingredientUsage rdf:nodeID="Nade37206d1064210a6bcea7cdede743a"/>
+    <recipe:ingredientUsage rdf:nodeID="Nad9acd9d243348eaa7b4e2b354c6ec39"/>
+    <recipe:hasNutrition rdf:resource="http://example.org/recipe/nutrition_716429"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Naa2bf781ae66454a925a309543491afa">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_20420"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">12.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oz</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N904fdbe73533472d970ca2373644d181">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_11333"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">medium</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8d18a742b12640fd84355b3ac0a022fc">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_11529"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">medium</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/Diet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Diet</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nea2b923429d045e09adb51ecd2de8933">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_1001"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tbsp</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_11529">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">tomato</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/diet_vegetarian">
+    <rdf:type rdf:resource="http://example.org/recipe/Diet"/>
+    <rdfs:label xml:lang="en">vegetarian</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/carbohydrates">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N16ba7da481b346f69d7f7865998eed90">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_11143"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">stalks</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_11215">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">garlic</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_10010219">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">pork chops</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc941573417174b2c907e4a6f4cd1bf8a">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_10010219"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pieces</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_11282">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">onion</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/nutrition_715538">
+    <rdf:type rdf:resource="http://example.org/recipe/NutritionInfo"/>
+    <recipe:calories rdf:datatype="http://www.w3.org/2001/XMLSchema#float">521.0</recipe:calories>
+    <recipe:fat rdf:datatype="http://www.w3.org/2001/XMLSchema#float">12.0</recipe:fat>
+    <recipe:carbohydrates rdf:datatype="http://www.w3.org/2001/XMLSchema#float">69.0</recipe:carbohydrates>
+    <recipe:protein rdf:datatype="http://www.w3.org/2001/XMLSchema#float">35.0</recipe:protein>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_11333">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">bell pepper</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Naf44bc0c91d54e46b084859f2e05ca4c">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_20444"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.5</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cups</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1e9017e56010436a90eb44a925ef36d8">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_11215"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cloves</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nede9b4fb373a43279a7d58140116f252">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_16033"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cups</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nbbfb050cf0d242c6bd5f9a224cd64b54">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_2044"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.25</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cup</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/servings">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_20444">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">rice</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_11143">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">celery</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/hasCuisine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/recipe/Recipe"/>
+    <rdfs:range rdf:resource="http://example.org/recipe/Cuisine"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/hasIngredient">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/recipe/Recipe"/>
+    <rdfs:range rdf:resource="http://example.org/recipe/Ingredient"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/hasDiet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/recipe/Recipe"/>
+    <rdfs:range rdf:resource="http://example.org/recipe/Diet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_10011135">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">cauliflower</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_2044">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">basil</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/fat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/nutrition_716429">
+    <rdf:type rdf:resource="http://example.org/recipe/NutritionInfo"/>
+    <recipe:calories rdf:datatype="http://www.w3.org/2001/XMLSchema#float">584.0</recipe:calories>
+    <recipe:fat rdf:datatype="http://www.w3.org/2001/XMLSchema#float">20.0</recipe:fat>
+    <recipe:carbohydrates rdf:datatype="http://www.w3.org/2001/XMLSchema#float">84.0</recipe:carbohydrates>
+    <recipe:protein rdf:datatype="http://www.w3.org/2001/XMLSchema#float">19.0</recipe:protein>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/ingredient/ing_16033">
+    <rdf:type rdf:resource="http://example.org/recipe/Ingredient"/>
+    <rdfs:label xml:lang="en">red kidney beans</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/ingredientUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/diet_gluten_free">
+    <rdf:type rdf:resource="http://example.org/recipe/Diet"/>
+    <rdfs:label xml:lang="en">gluten free</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/cuisine/mediterranean">
+    <rdf:type rdf:resource="http://example.org/recipe/Cuisine"/>
+    <rdfs:label xml:lang="en">Mediterranean</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/calories">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3e64395fca8d4ba7b4b66366bc96c8f2">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_10011135"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cups</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/cuisine/american">
+    <rdf:type rdf:resource="http://example.org/recipe/Cuisine"/>
+    <rdfs:label xml:lang="en">American</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/hasNutrition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://example.org/recipe/Recipe"/>
+    <rdfs:range rdf:resource="http://example.org/recipe/NutritionInfo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/Ingredient">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Ingredient</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/Cuisine">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Cuisine</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/protein">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/diet_vegan">
+    <rdf:type rdf:resource="http://example.org/recipe/Diet"/>
+    <rdfs:label xml:lang="en">vegan</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/cuisine/italian">
+    <rdf:type rdf:resource="http://example.org/recipe/Cuisine"/>
+    <rdfs:label xml:lang="en">Italian</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N88bd51adf4d04653ab36ee3845f3290f">
+    <recipe:usesIngredient rdf:resource="http://example.org/ingredient/ing_11282"/>
+    <recipe:ingredientAmount rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</recipe:ingredientAmount>
+    <recipe:ingredientUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string">large</recipe:ingredientUnit>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/NutritionInfo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Nutrition Information</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/recipe/readyInMinutes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+</rdf:RDF>
