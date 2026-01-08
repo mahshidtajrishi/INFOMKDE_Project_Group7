@@ -1,47 +1,20 @@
-"""
-Script 2: Convert Spoonacular JSON to RDF Triples
-==================================================
-This script converts recipe data from JSON format into RDF (Resource Description Framework).
-
-WHAT IS RDF?
-- RDF represents data as "triples": Subject - Predicate - Object
-- Example: "Pasta Recipe" - "hasIngredient" - "Garlic"
-- This allows machines to understand relationships between data
-
-WHAT THIS SCRIPT DOES:
-1. Reads recipe JSON data
-2. Creates RDF triples for each recipe, ingredient, cuisine, etc.
-3. Saves the output as Turtle (.ttl) format
-
-HOW TO USE:
-    python convert_to_rdf.py
-
-OUTPUT:
-    - output/recipes.ttl (Turtle format - human readable)
-    - output/recipes.rdf (RDF/XML format - for tools)
-"""
-
 import json
 import os
 from rdflib import Graph, Namespace, Literal, URIRef, BNode
 from rdflib.namespace import RDF, RDFS, XSD, OWL
 
 
-# ============================================================
-# NAMESPACE DEFINITIONS
-# ============================================================
-# These define the vocabulary (prefixes) we use in our RDF data
 
-# Our custom namespace for recipe-related terms
+# custom namespace for recipes
 RECIPE = Namespace("http://example.org/recipe/")
 
-# Our custom namespace for ingredients
+# custom namespace for ingredients
 INGREDIENT = Namespace("http://example.org/ingredient/")
 
-# Our custom namespace for cuisines
+#  custom namespace for cuisines
 CUISINE = Namespace("http://example.org/cuisine/")
 
-# Schema.org - a widely used vocabulary for structured data
+# Schema.org
 SCHEMA = Namespace("http://schema.org/")
 
 # Food Ontology (if we want to link to existing food ontologies)
@@ -55,11 +28,11 @@ def clean_string_for_uri(text):
     """
     if not text:
         return "unknown"
-    # Lowercase, replace spaces with underscores, remove special chars
+   
     clean = text.lower().strip()
     clean = clean.replace(" ", "_")
     clean = clean.replace("&", "and")
-    # Remove any character that's not alphanumeric or underscore
+   
     clean = ''.join(c for c in clean if c.isalnum() or c == '_')
     return clean
 
@@ -74,10 +47,10 @@ def create_recipe_graph(recipes_data):
     3. Creates instances (actual recipes) with their properties
     """
     
-    # Create a new graph
+    
     g = Graph()
     
-    # Bind namespaces for nice prefixes in output
+    
     g.bind("recipe", RECIPE)
     g.bind("ingredient", INGREDIENT)
     g.bind("cuisine", CUISINE)
@@ -87,9 +60,7 @@ def create_recipe_graph(recipes_data):
     print("Creating RDF triples...")
     print("-" * 40)
     
-    # ========================================================
-    # STEP 1: Define our ontology classes (TBox)
-    # ========================================================
+   
     # These define WHAT TYPES of things exist in our knowledge graph
     
     # Define Recipe as a class
@@ -112,15 +83,29 @@ def create_recipe_graph(recipes_data):
     # Define NutritionInfo as a class
     g.add((RECIPE.NutritionInfo, RDF.type, OWL.Class))
     g.add((RECIPE.NutritionInfo, RDFS.label, Literal("Nutrition Information", lang="en")))
+    g.add((RECIPE.IngredientUsage, RDF.type, OWL.Class))
+    g.add((RECIPE.IngredientUsage, RDFS.label, Literal("Ingredient Usage", lang="en")))
     
-    # ========================================================
+    
+   
     # STEP 2: Define properties (relationships)
-    # ========================================================
-    
+   
     # hasIngredient: Recipe -> Ingredient
     g.add((RECIPE.hasIngredient, RDF.type, OWL.ObjectProperty))
     g.add((RECIPE.hasIngredient, RDFS.domain, RECIPE.Recipe))
     g.add((RECIPE.hasIngredient, RDFS.range, RECIPE.Ingredient))
+    
+    # ingredientUsage: Recipe -> Usage (blank node)
+    g.add((RECIPE.ingredientUsage, RDF.type, OWL.ObjectProperty))
+    g.add((RECIPE.ingredientUsage, RDFS.domain, RECIPE.Recipe))
+    g.add((RECIPE.ingredientUsage, RDFS.range, RECIPE.IngredientUsage))
+    
+    # usesIngredient: Usage -> Ingredient
+    g.add((RECIPE.usesIngredient, RDF.type, OWL.ObjectProperty))
+    g.add((RECIPE.usesIngredient, RDFS.domain, RECIPE.IngredientUsage))
+    g.add((RECIPE.usesIngredient, RDFS.range, RECIPE.Ingredient))
+
+    
     
     # hasCuisine: Recipe -> Cuisine
     g.add((RECIPE.hasCuisine, RDF.type, OWL.ObjectProperty))
@@ -148,10 +133,9 @@ def create_recipe_graph(recipes_data):
     g.add((RECIPE.fat, RDF.type, OWL.DatatypeProperty))
     g.add((RECIPE.carbohydrates, RDF.type, OWL.DatatypeProperty))
     
-    # ========================================================
-    # STEP 3: Create instances (ABox) - actual recipe data
-    # ========================================================
     
+    # STEP 3: Create instances (ABox) - actual recipe data
+   
     recipes = recipes_data.get('results', [])
     
     for recipe in recipes:
@@ -221,6 +205,7 @@ def create_recipe_graph(recipes_data):
             # Create a blank node for the specific usage of this ingredient in this recipe
             # (because the same ingredient can have different amounts in different recipes)
             usage = BNode()
+            g.add((usage, RDF.type, RECIPE.IngredientUsage))
             g.add((recipe_uri, RECIPE.ingredientUsage, usage))
             g.add((usage, RECIPE.usesIngredient, ingredient_uri))
             
@@ -279,19 +264,25 @@ def main():
     project_dir = os.path.join(script_dir, "..")
     data_dir = os.path.join(project_dir, "data")
     output_dir = os.path.join(project_dir, "output")
+    os.makedirs(output_dir, exist_ok=True)
+
     
-    # Try to load real data first, fall back to sample data
+    # Try to load data files in order of preference
+    all_recipes_path = os.path.join(data_dir, "all_recipes.json")
     real_data_path = os.path.join(data_dir, "spoonacular_recipes_raw.json")
     sample_data_path = os.path.join(data_dir, "sample_recipes.json")
     
-    if os.path.exists(real_data_path):
+    if os.path.exists(all_recipes_path):
+        data_path = all_recipes_path
+        print(f"Using all recipes data: {data_path}")
+    elif os.path.exists(real_data_path):
         data_path = real_data_path
         print(f"Using real Spoonacular data: {data_path}")
     elif os.path.exists(sample_data_path):
         data_path = sample_data_path
         print(f"Using sample data: {data_path}")
     else:
-        print("✗ No data found! Run fetch_spoonacular_data.py first.")
+        print("✗ No data found! Run fetch_more_recipes.py first.")
         return
     
     # Load JSON data
@@ -299,6 +290,9 @@ def main():
     with open(data_path, 'r', encoding='utf-8') as f:
         recipes_data = json.load(f)
     
+    # Handle both formats (list or dict with 'results')
+    if isinstance(recipes_data, list):
+        recipes_data = {"results": recipes_data}
     print(f"Found {len(recipes_data.get('results', []))} recipes\n")
     
     # Create RDF graph
@@ -325,12 +319,9 @@ def main():
         print(f"  {s.n3()} {p.n3()} {o.n3()}")
     
     print("\n" + "=" * 60)
-    print("SUCCESS! Your RDF knowledge graph is ready.")
+  
     print("=" * 60)
-    print("\nNext steps:")
-    print("  1. Open recipes.ttl to see your RDF data")
-    print("  2. Load it into a triple store (like Apache Jena)")
-    print("  3. Write SPARQL queries to query your data")
+   
 
 
 if __name__ == "__main__":

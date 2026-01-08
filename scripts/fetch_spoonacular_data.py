@@ -1,6 +1,3 @@
-"""
-Script 1: Fetch Recipe Data from Spoonacular API
-"""
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -14,7 +11,7 @@ if not API_KEY:
 
 
 # How many recipes to fetch
-NUMBER_OF_RECIPES = 15
+NUMBER_OF_RECIPES = 30
 
 def fetch_recipes(api_key, number=10):
     """Fetch recipes from Spoonacular API with full information."""
@@ -69,7 +66,7 @@ def main():
     
     if data:
         # Save raw data
-        save_to_json(data, "spoonacular_recipes_raw.json")
+        save_to_json(data, "spoonacular_recipes_raw_30.json")
         
         # Print summary
         print("\n" + "=" * 60)
@@ -83,7 +80,7 @@ def main():
             print(f"{i:2}. {title}")
             print(f"    Cuisine: {cuisines} | Time: {time} mins")
         
-        print("\n✓ Next step: Run 'python convert_to_rdf.py' to create RDF triples!")
+    
 
 
 if __name__ == "__main__":
