@@ -1,5 +1,7 @@
 import os
 import json
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 from typing import Optional, List
 from fastapi import FastAPI, Request, Query
 from fastapi.responses import HTMLResponse
@@ -7,6 +9,84 @@ from fastapi.staticfiles import StaticFiles
 from rdflib import Graph, Namespace, Literal
 from rdflib.namespace import RDF, RDFS
 import uvicorn
+
+
+EMBEDDINGS = None
+ENTITY_NAMES = None
+ENTITY_TO_IDX = None
+
+def load_embeddings():
+    """Load pre-trained graph embeddings"""
+    global EMBEDDINGS, ENTITY_NAMES, ENTITY_TO_IDX
+    
+    embeddings_path = os.path.join(os.path.dirname(__file__), "..", "output", "recipe_embeddings.npz")
+    
+    if os.path.exists(embeddings_path):
+        try:
+            data = np.load(embeddings_path, allow_pickle=True)
+            EMBEDDINGS = data['embeddings']
+            ENTITY_NAMES = data['entities']
+            ENTITY_TO_IDX = {name: idx for idx, name in enumerate(ENTITY_NAMES)}
+            print(f"✓ Loaded embeddings for {len(ENTITY_NAMES)} entities")
+            return True
+        except Exception as e:
+            print(f"✗ Error loading embeddings: {e}")
+            return False
+    else:
+        print(f"✗ Embeddings file not found: {embeddings_path}")
+        return False
+
+# Load embeddings on startup
+load_embeddings()
+
+
+def find_similar_entities(entity_name, top_k=5, entity_type=None):
+    """Find entities similar to the given entity using embeddings"""
+    global EMBEDDINGS, ENTITY_NAMES, ENTITY_TO_IDX
+    
+    if EMBEDDINGS is None:
+        return []
+    
+    # Find the entity
+    if entity_name not in ENTITY_TO_IDX:
+        # Try partial match
+        matches = [name for name in ENTITY_NAMES if entity_name.lower() in name.lower()]
+        if matches:
+            entity_name = matches[0]
+        else:
+            return []
+    
+    idx = ENTITY_TO_IDX[entity_name]
+    entity_embedding = EMBEDDINGS[idx].reshape(1, -1)
+    
+    # Calculate similarities
+    similarities = cosine_similarity(entity_embedding, EMBEDDINGS)[0]
+    
+    # Get top-k similar (excluding self)
+    similar_indices = np.argsort(similarities)[::-1][1:top_k+10]  # Get extra to filter
+    
+    results = []
+    for sim_idx in similar_indices:
+        sim_name = ENTITY_NAMES[sim_idx]
+        sim_score = similarities[sim_idx]
+        
+        # Filter by entity type if specified
+        if entity_type == "recipe":
+            if "recipe_" in sim_name.lower() or "Recipe" in sim_name:
+                results.append({"name": sim_name, "similarity": float(sim_score)})
+        elif entity_type == "ingredient":
+            if "recipe_" not in sim_name.lower() and "Recipe" not in sim_name and "Cuisine" not in sim_name:
+                results.append({"name": sim_name, "similarity": float(sim_score)})
+        else:
+            results.append({"name": sim_name, "similarity": float(sim_score)})
+        
+        if len(results) >= top_k:
+            break
+    
+    return results
+
+
+
 
 # FastAPI app
 app = FastAPI(
@@ -33,6 +113,7 @@ def load_knowledge_graph():
     
     # Try loading the most complete RDF file available
     possible_files = [
+        os.path.join(script_dir, "..", "output", "recipes_with_foodon.ttl"),
         os.path.join(script_dir, "..", "output", "recipes_with_usda.ttl"),
         os.path.join(script_dir, "..", "output", "recipes_integrated.ttl"),
         os.path.join(script_dir, "..", "output", "recipes_with_ontology.ttl"),
@@ -541,6 +622,7 @@ HTML_TEMPLATE = """
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="/"><i class="fas fa-home me-1"></i>Home</a>
                 <a class="nav-link" href="/search"><i class="fas fa-search me-1"></i>Search</a>
+                <a class="nav-link" href="/similar">Similar</a> 
                 <a class="nav-link" href="/graph"><i class="fas fa-project-diagram me-1"></i>Graph</a>
                 <a class="nav-link" href="/stats"><i class="fas fa-chart-bar me-1"></i>Stats</a>
             </div>
@@ -861,6 +943,180 @@ async def recipe_detail(recipe_id: str):
     
     return HTML_TEMPLATE.replace("{{content}}", content)
 
+@app.get("/api/similar/{entity_name}")
+async def get_similar_entities(entity_name: str, top_k: int = 5, entity_type: str = None):
+    """API endpoint to find similar entities"""
+    results = find_similar_entities(entity_name, top_k, entity_type)
+    return {"entity": entity_name, "similar": results}
+
+@app.get("/similar", response_class=HTMLResponse)
+async def similar_page(request: Request):
+    """Similarity search page"""
+    
+    # Get list of recipes for dropdown
+    recipes = get_all_recipes()
+    
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Find Similar Recipes - Recipe Knowledge Graph</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <style>
+            body {{ background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; color: white; }}
+            .navbar {{ background: rgba(0,0,0,0.3) !important; }}
+            .card {{ background: rgba(255,255,255,0.1); border: none; backdrop-filter: blur(10px); }}
+            .form-select, .form-control {{ background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; }}
+            .form-select option {{ background: #1a1a2e; color: white; }}
+            .btn-primary {{ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; }}
+            .btn-primary:hover {{ background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }}
+            .result-card {{ background: linear-gradient(135deg, rgba(102,126,234,0.2) 0%, rgba(118,75,162,0.2) 100%); 
+                          border-radius: 15px; padding: 20px; margin: 10px 0; transition: transform 0.3s; }}
+            .result-card:hover {{ transform: translateY(-5px); }}
+            .similarity-bar {{ height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }}
+            .similarity-fill {{ height: 100%; background: linear-gradient(90deg, #667eea, #764ba2); border-radius: 4px; }}
+            .similarity-score {{ font-size: 1.5rem; font-weight: bold; color: #667eea; }}
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/"><i class="fas fa-utensils me-2"></i>Recipe Knowledge Graph</a>
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/search">Search</a>
+                    <a class="nav-link active" href="/similar">Similar</a>
+                    <a class="nav-link" href="/graph">Graph</a>
+                    <a class="nav-link" href="/stats">Stats</a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h1><i class="fas fa-magic me-3"></i>Find Similar Recipes</h1>
+                <p class="lead">Using Graph Embeddings (PyKEEN/RotatE)</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card p-4 mb-4">
+                        <h5><i class="fas fa-search me-2"></i>Select a Recipe</h5>
+                        <div class="row g-3 mt-2">
+                            <div class="col-md-8">
+                                <select id="recipeSelect" class="form-select">
+                                    <option value="">-- Select a recipe --</option>
+                                    {"".join(f'<option value="{r.get("uri", "").split("/")[-1] if r.get("uri") else ""}">{r.get("title", "Unknown")}</option>' for r in recipes)}
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <button onclick="findSimilar()" class="btn btn-primary w-100">
+                                    <i class="fas fa-search me-2"></i>Find Similar
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6>Or search by ingredient:</h6>
+                            <div class="row g-3">
+                                <div class="col-md-8">
+                                    <input type="text" id="ingredientInput" class="form-control" placeholder="e.g., chicken, garlic, tomato">
+                                </div>
+                                <div class="col-md-4">
+                                    <button onclick="findSimilarIngredient()" class="btn btn-primary w-100">
+                                        <i class="fas fa-leaf me-2"></i>Find Similar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="results"></div>
+                    
+                
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            async function findSimilar() {{
+                const select = document.getElementById('recipeSelect');
+                const entity = select.value;
+                if (!entity) {{
+                    alert('Please select a recipe');
+                    return;
+                }}
+                
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin fa-2x"></i><p>Finding similar recipes...</p></div>';
+                
+                try {{
+                    const response = await fetch(`/api/similar/${{entity}}?top_k=5&entity_type=recipe`);
+                    const data = await response.json();
+                    displayResults(data, 'recipe');
+                }} catch (error) {{
+                    resultsDiv.innerHTML = '<div class="alert alert-danger">Error finding similar recipes</div>';
+                }}
+            }}
+            
+            async function findSimilarIngredient() {{
+                const input = document.getElementById('ingredientInput');
+                const entity = input.value.trim();
+                if (!entity) {{
+                    alert('Please enter an ingredient');
+                    return;
+                }}
+                
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin fa-2x"></i><p>Finding similar ingredients...</p></div>';
+                
+                try {{
+                    const response = await fetch(`/api/similar/${{entity}}?top_k=5&entity_type=ingredient`);
+                    const data = await response.json();
+                    displayResults(data, 'ingredient');
+                }} catch (error) {{
+                    resultsDiv.innerHTML = '<div class="alert alert-danger">Error finding similar ingredients</div>';
+                }}
+            }}
+            
+            function displayResults(data, type) {{
+                const resultsDiv = document.getElementById('results');
+                
+                if (!data.similar || data.similar.length === 0) {{
+                    resultsDiv.innerHTML = '<div class="alert alert-warning">No similar items found</div>';
+                    return;
+                }}
+                
+                let html = `<h4 class="mb-3"><i class="fas fa-list me-2"></i>Similar to: ${{data.entity}}</h4>`;
+                
+                data.similar.forEach((item, index) => {{
+                    const percentage = (item.similarity * 100).toFixed(1);
+                    const name = item.name.split('/').pop().replace('recipe_', 'Recipe ').replace(/_/g, ' ');
+                    
+                    html += `
+                         <div class="result-card" style="cursor: pointer;" onclick="window.location.href='/recipe/${{item.name.split('/').pop()}}'">
+                           <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                     <span class="badge bg-primary me-2">#${{index + 1}}</span>
+                                     <strong>${{name}}</strong>
+                                </div>
+                                <div class="similarity-score">${{percentage}}%</div>
+                           </div>
+                           <div class="similarity-bar mt-2">
+                                 <div class="similarity-fill" style="width: ${{percentage}}%"></div>
+                            </div>
+                          </div>
+                    `;
+                }});
+                
+                resultsDiv.innerHTML = html;
+            }}
+        </script>
+    </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content)
 
 @app.get("/graph", response_class=HTMLResponse)
 async def graph_page():
@@ -1005,7 +1261,7 @@ async def stats_page():
     """
     
     return HTML_TEMPLATE.replace("{{content}}", content)
-
+            
 
 # API Endpoints (for programmatic access)
 @app.get("/api/recipes")

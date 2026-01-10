@@ -1,0 +1,257 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix recipe: <http://example.org/recipe/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# ============================================================================
+# SHACL SHAPES FOR RECIPE KNOWLEDGE GRAPH
+# ============================================================================
+# This file defines validation rules (shapes) for the Recipe Knowledge Graph.
+# SHACL (Shapes Constraint Language) is a W3C standard for validating RDF data.
+#
+# Purpose:
+#   - Ensure data quality and consistency
+#   - Catch missing or invalid data automatically
+#   - Document the expected structure of the knowledge graph
+#
+# Usage:
+#   Run validate_shacl.py to check your RDF data against these shapes
+# ============================================================================
+
+
+# ============================================================================
+# RECIPE SHAPE
+# ============================================================================
+# Validates that all Recipe instances have required properties and correct types
+
+recipe:RecipeShape a sh:NodeShape ;
+    sh:targetClass recipe:Recipe ;
+    sh:name "Recipe Shape" ;
+    sh:description "Validates Recipe instances in the knowledge graph" ;
+    
+    # Every recipe MUST have exactly one title
+    sh:property [
+        sh:path recipe:title ;
+        sh:name "title" ;
+        sh:description "Recipe must have exactly one title" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:severity sh:Violation ;
+    ] ;
+    
+    # Every recipe MUST have at least one ingredient
+    sh:property [
+        sh:path recipe:hasIngredient ;
+        sh:name "ingredients" ;
+        sh:description "Recipe must have at least one ingredient" ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+    ] ;
+    
+    # Ready time (optional but must be positive if present)
+    sh:property [
+        sh:path recipe:readyInMinutes ;
+        sh:name "ready time" ;
+        sh:description "Cooking time must be a positive integer (1-1440 minutes)" ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 1440 ;  # Max 24 hours
+        sh:severity sh:Warning ;
+    ] ;
+    
+    # Servings (optional but must be positive if present)
+    sh:property [
+        sh:path recipe:servings ;
+        sh:name "servings" ;
+        sh:description "Number of servings must be a positive integer" ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 100 ;
+        sh:severity sh:Warning ;
+    ] ;
+    
+    # Image URL (optional but must be a valid URI if present)
+    sh:property [
+        sh:path recipe:image ;
+        sh:name "image" ;
+        sh:description "Image must be a valid URL" ;
+        sh:nodeKind sh:Literal ;
+        sh:severity sh:Info ;
+    ] ;
+    
+    # Source URL (optional)
+    sh:property [
+        sh:path recipe:sourceUrl ;
+        sh:name "source URL" ;
+        sh:description "Source URL for the original recipe" ;
+        sh:maxCount 1 ;
+        sh:severity sh:Info ;
+    ] .
+
+
+# ============================================================================
+# INGREDIENT SHAPE
+# ============================================================================
+# Validates that all Ingredient instances have required properties
+
+recipe:IngredientShape a sh:NodeShape ;
+    sh:targetClass recipe:Ingredient ;
+    sh:name "Ingredient Shape" ;
+    sh:description "Validates Ingredient instances in the knowledge graph" ;
+    
+    # Every ingredient MUST have a label
+    sh:property [
+        sh:path rdfs:label ;
+        sh:name "label" ;
+        sh:description "Ingredient must have a human-readable label" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:severity sh:Violation ;
+    ] .
+
+
+# ============================================================================
+# NUTRITION SHAPE
+# ============================================================================
+# Validates nutrition information has valid numeric values
+
+recipe:NutritionShape a sh:NodeShape ;
+    sh:targetClass recipe:Nutrition ;
+    sh:name "Nutrition Shape" ;
+    sh:description "Validates Nutrition instances in the knowledge graph" ;
+    
+    # Calories must be non-negative
+    sh:property [
+        sh:path recipe:calories ;
+        sh:name "calories" ;
+        sh:description "Calories must be a non-negative number" ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 10000 ;  # Reasonable upper limit
+        sh:severity sh:Violation ;
+    ] ;
+    
+    # Protein must be non-negative
+    sh:property [
+        sh:path recipe:protein ;
+        sh:name "protein" ;
+        sh:description "Protein (grams) must be a non-negative number" ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:severity sh:Warning ;
+    ] ;
+    
+    # Carbohydrates must be non-negative
+    sh:property [
+        sh:path recipe:carbohydrates ;
+        sh:name "carbohydrates" ;
+        sh:description "Carbohydrates (grams) must be a non-negative number" ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:severity sh:Warning ;
+    ] ;
+    
+    # Fat must be non-negative
+    sh:property [
+        sh:path recipe:fat ;
+        sh:name "fat" ;
+        sh:description "Fat (grams) must be a non-negative number" ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:severity sh:Warning ;
+    ] ;
+    
+    # Fiber must be non-negative
+    sh:property [
+        sh:path recipe:fiber ;
+        sh:name "fiber" ;
+        sh:description "Fiber (grams) must be a non-negative number" ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:severity sh:Info ;
+    ] ;
+    
+    # Sugar must be non-negative
+    sh:property [
+        sh:path recipe:sugar ;
+        sh:name "sugar" ;
+        sh:description "Sugar (grams) must be a non-negative number" ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:severity sh:Info ;
+    ] .
+
+
+# ============================================================================
+# DIET SHAPE
+# ============================================================================
+# Validates diet type instances
+
+recipe:DietShape a sh:NodeShape ;
+    sh:targetClass recipe:Diet ;
+    sh:name "Diet Shape" ;
+    sh:description "Validates Diet instances in the knowledge graph" ;
+    
+    # Every diet MUST have a label
+    sh:property [
+        sh:path rdfs:label ;
+        sh:name "label" ;
+        sh:description "Diet must have a human-readable label" ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:severity sh:Violation ;
+    ] .
+
+
+# ============================================================================
+# CUISINE SHAPE
+# ============================================================================
+# Validates cuisine type instances
+
+recipe:CuisineShape a sh:NodeShape ;
+    sh:targetClass recipe:Cuisine ;
+    sh:name "Cuisine Shape" ;
+    sh:description "Validates Cuisine instances in the knowledge graph" ;
+    
+    # Every cuisine MUST have a label
+    sh:property [
+        sh:path rdfs:label ;
+        sh:name "label" ;
+        sh:description "Cuisine must have a human-readable label" ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:severity sh:Violation ;
+    ] .
+
+
+# ============================================================================
+# USDA FOOD SHAPE
+# ============================================================================
+# Validates USDA food data integration
+
+recipe:USDAFoodShape a sh:NodeShape ;
+    sh:targetClass recipe:USDAFood ;
+    sh:name "USDA Food Shape" ;
+    sh:description "Validates USDA Food instances in the knowledge graph" ;
+    
+    # Must have an FDC ID
+    sh:property [
+        sh:path recipe:fdcId ;
+        sh:name "FDC ID" ;
+        sh:description "USDA FoodData Central ID" ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:severity sh:Violation ;
+    ] ;
+    
+    # Must have a description
+    sh:property [
+        sh:path recipe:description ;
+        sh:name "description" ;
+        sh:description "Food description from USDA" ;
+        sh:datatype xsd:string ;
+        sh:severity sh:Warning ;
+    ] .
