@@ -1,29 +1,3 @@
-"""
-Script 8: Graph Embeddings with PyKEEN
-======================================
-This script creates vector embeddings of your knowledge graph entities
-using the RotatE model, enabling:
-- Recipe similarity search
-- Ingredient recommendations
-- Link prediction (what ingredient might work with this recipe?)
-
-This fulfills the OPTIONAL but impressive requirement mentioned in your pitch:
-"Graph embeddings using pykeen with RotatE"
-
-WHAT THIS DOES:
-1. Loads your RDF knowledge graph
-2. Converts it to PyKEEN triples format
-3. Trains a RotatE embedding model
-4. Generates 128-dimensional vectors for all entities
-5. Provides similarity search and link prediction
-
-BEFORE RUNNING:
-    pip install pykeen torch numpy scikit-learn
-
-HOW TO USE:
-    python graph_embeddings.py
-"""
-
 import os
 import sys
 import numpy as np
@@ -53,7 +27,7 @@ from rdflib.namespace import RDF, RDFS, OWL
 RECIPE = Namespace("http://example.org/recipe/")
 INGREDIENT = Namespace("http://example.org/ingredient/")
 USDA = Namespace("http://example.org/usda/")
-
+FOODON = Namespace("http://purl.obolibrary.org/obo/") 
 
 def load_rdf_as_triples(rdf_path):
     """
@@ -303,13 +277,11 @@ def save_embeddings(entity_to_embedding, entity_labels, output_path):
         embeddings=np.array(list(entity_to_embedding.values())),
         labels=[entity_labels.get(e, e.split('/')[-1]) for e in entity_to_embedding.keys()]
     )
-    print("✓ Embeddings saved!")
+    print("Embeddings saved!")
 
 
 def main():
     print("=" * 70)
-    print("GRAPH EMBEDDINGS WITH PyKEEN")
-    print("Training RotatE Model on Recipe Knowledge Graph")
     print("=" * 70)
     
     # Find input file
@@ -317,6 +289,7 @@ def main():
     
     # Try different input files in order of preference
     possible_inputs = [
+        os.path.join(script_dir, "..", "output", "recipes_with_foodon.ttl"),
         os.path.join(script_dir, "..", "output", "recipes_with_usda.ttl"),
         os.path.join(script_dir, "..", "output", "recipes_integrated.ttl"),
         os.path.join(script_dir, "..", "output", "recipes_with_ontology.ttl"),
@@ -395,27 +368,9 @@ def main():
     
     # Print summary
     print("\n" + "=" * 70)
-    print("GRAPH EMBEDDINGS COMPLETE!")
+    print("EMBEDDING GENERATION COMPLETE!")
     print("=" * 70)
-    print(f"""
-What was created:
-  ✓ RotatE model trained on {len(triples)} triples
-  ✓ {len(entity_to_embedding)} entity embeddings generated
-  ✓ Embeddings saved to: {output_embeddings}
-
-What you can do with embeddings:
-  1. Find similar recipes (content-based recommendation)
-  2. Find similar ingredients (for substitutions)
-  3. Predict missing links (what ingredient goes with this recipe?)
-  4. Cluster recipes by similarity
-  5. Visualize the knowledge graph in 2D/3D (using t-SNE or UMAP)
-
-For your report:
-  "We trained a RotatE knowledge graph embedding model using PyKEEN,
-   generating {embeddings.shape[1]}-dimensional vectors for {len(entity_to_embedding)} entities.
-   This enables semantic similarity search and link prediction
-   beyond what's possible with SPARQL queries alone."
-""")
+   
 
 
 if __name__ == "__main__":
