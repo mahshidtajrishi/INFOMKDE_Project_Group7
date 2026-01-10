@@ -1,0 +1,414 @@
+{
+  "meals": [
+    {
+      "strMeal": "Air fryer patatas bravas",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg",
+      "idMeal": "53158"
+    },
+    {
+      "strMeal": "Algerian Flafla (Bell Pepper Salad)",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/tbj1bs1764118062.jpg",
+      "idMeal": "53288"
+    },
+    {
+      "strMeal": "Aubergine & hummus grills",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/zub3s91764110535.jpg",
+      "idMeal": "53278"
+    },
+    {
+      "strMeal": "Aubergine couscous salad",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/02s6gc1763799560.jpg",
+      "idMeal": "53267"
+    },
+    {
+      "strMeal": "Avocado dip with new potatoes",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/flrajf1762341295.jpg",
+      "idMeal": "53107"
+    },
+    {
+      "strMeal": "Baingan Bharta",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/urtpqw1487341253.jpg",
+      "idMeal": "52807"
+    },
+    {
+      "strMeal": "Beetroot & red cabbage sauerkraut",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ra2k8a1764365055.jpg",
+      "idMeal": "53307"
+    },
+    {
+      "strMeal": "Beetroot latkes",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/qwicc91764368097.jpg",
+      "idMeal": "53313"
+    },
+    {
+      "strMeal": "Beetroot Soup (Borscht)",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg",
+      "idMeal": "53078"
+    },
+    {
+      "strMeal": "Braised stuffed cabbage",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/z267f71764364072.jpg",
+      "idMeal": "53305"
+    },
+    {
+      "strMeal": "Cabbage Soup (Shchi)",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/60oc3k1699009846.jpg",
+      "idMeal": "53077"
+    },
+    {
+      "strMeal": "Chickpea Fajitas",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg",
+      "idMeal": "52870"
+    },
+    {
+      "strMeal": "Chinese Tomato Egg Stir Fry",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg",
+      "idMeal": "53372"
+    },
+    {
+      "strMeal": "Chtitha Batata (Algerian Potato Stew)",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/q8pu1k1764114334.jpg",
+      "idMeal": "53283"
+    },
+    {
+      "strMeal": "Crispy Eggplant",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/c7lzrl1683208757.jpg",
+      "idMeal": "53072"
+    },
+    {
+      "strMeal": "Cucumber & fennel salad",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ei21r61764365935.jpg",
+      "idMeal": "53309"
+    },
+    {
+      "strMeal": "Dal fry",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wuxrtu1483564410.jpg",
+      "idMeal": "52785"
+    },
+    {
+      "strMeal": "Egg Drop Soup",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/1529446137.jpg",
+      "idMeal": "52955"
+    },
+    {
+      "strMeal": "Eggplant Adobo",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/y7h0lq1683208991.jpg",
+      "idMeal": "53073"
+    },
+    {
+      "strMeal": "Ezme",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/pb6mj11763788331.jpg",
+      "idMeal": "53254"
+    },
+    {
+      "strMeal": "Falafel",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/u5e9qq1763795441.jpg",
+      "idMeal": "53266"
+    },
+    {
+      "strMeal": "Falafel Pita Sandwich with Tahini Sauce",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg",
+      "idMeal": "53091"
+    },
+    {
+      "strMeal": "Flamiche",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wssvvs1511785879.jpg",
+      "idMeal": "52906"
+    },
+    {
+      "strMeal": "Ful Medames",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg",
+      "idMeal": "53025"
+    },
+    {
+      "strMeal": "Gigantes Plaki",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/b79r6f1585566277.jpg",
+      "idMeal": "53012"
+    },
+    {
+      "strMeal": "Griddled aubergines with sesame dressing",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/yoj48r1763817100.jpg",
+      "idMeal": "53274"
+    },
+    {
+      "strMeal": "Grilled aubergines with spicy chickpeas & walnut sauce",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ctw3ba1763788978.jpg",
+      "idMeal": "53255"
+    },
+    {
+      "strMeal": "Grilled eggplant with coconut milk",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/bopa2i1683209167.jpg",
+      "idMeal": "53074"
+    },
+    {
+      "strMeal": "Hodge Podge",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/xihv0c1764447887.jpg",
+      "idMeal": "53340"
+    },
+    {
+      "strMeal": "Jamaican Instant Pot Rice and Beans",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/11bvtm1764795135.jpg",
+      "idMeal": "53352"
+    },
+    {
+      "strMeal": "Jamaican Rice and Peas",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/pkyvrn1764878267.jpg",
+      "idMeal": "53357"
+    },
+    {
+      "strMeal": "Kafteji",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/1bsv1q1560459826.jpg",
+      "idMeal": "52971"
+    },
+    {
+      "strMeal": "Kidney Bean Curry",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg",
+      "idMeal": "52868"
+    },
+    {
+      "strMeal": "Koshari",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg",
+      "idMeal": "53027"
+    },
+    {
+      "strMeal": "Leblebi Soup",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/x2fw9e1560460636.jpg",
+      "idMeal": "52973"
+    },
+    {
+      "strMeal": "Matar Paneer",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/xxpqsy1511452222.jpg",
+      "idMeal": "52865"
+    },
+    {
+      "strMeal": "Molasses Baked Beans",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/9tddhg1764443699.jpg",
+      "idMeal": "53336"
+    },
+    {
+      "strMeal": "Moroccan Carrot Soup",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/jcr46d1614763831.jpg",
+      "idMeal": "53047"
+    },
+    {
+      "strMeal": "Mushroom & Chestnut Rotolo",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ssyqwr1511451678.jpg",
+      "idMeal": "52864"
+    },
+    {
+      "strMeal": "Nordic smørrebrød with asparagus and horseradish cream",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/8a8fu01762772651.jpg",
+      "idMeal": "53117"
+    },
+    {
+      "strMeal": "Patatas bravas",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/bvg8sn1763298713.jpg",
+      "idMeal": "53172"
+    },
+    {
+      "strMeal": "Pisto con huevos",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/0nswfe1763279040.jpg",
+      "idMeal": "53160"
+    },
+    {
+      "strMeal": "Pomegranate salad",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/fqpqml1764359125.jpg",
+      "idMeal": "53297"
+    },
+    {
+      "strMeal": "Potato Salad (Olivier Salad)",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ebvuir1699013665.jpg",
+      "idMeal": "53081"
+    },
+    {
+      "strMeal": "Provençal Omelette Cake",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/qwtrtp1511799242.jpg",
+      "idMeal": "52921"
+    },
+    {
+      "strMeal": "Ratatouille",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wrpwuu1511786491.jpg",
+      "idMeal": "52908"
+    },
+    {
+      "strMeal": "Ribollita",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/xrrwpx1487347049.jpg",
+      "idMeal": "52811"
+    },
+    {
+      "strMeal": "Roast aubergine with goat's cheese & toasted flatbread",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg",
+      "idMeal": "53273"
+    },
+    {
+      "strMeal": "Roasted Eggplant With Tahini, Pine Nuts, and Lentils",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ysqrus1487425681.jpg",
+      "idMeal": "52816"
+    },
+    {
+      "strMeal": "Sauerkraut pierogi",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ckbx1h1764123606.jpg",
+      "idMeal": "53296"
+    },
+    {
+      "strMeal": "Sauerkraut pierogii",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/gqlxgc1764368767.jpg",
+      "idMeal": "53314"
+    },
+    {
+      "strMeal": "Shakshuka",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/g373701551450225.jpg",
+      "idMeal": "52963"
+    },
+    {
+      "strMeal": "Sichuan Eggplant",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/1oz4nb1765687990.jpg",
+      "idMeal": "53374"
+    },
+    {
+      "strMeal": "Sichuan Style Stir-Fried Chinese Long Beans",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/i0610h1765659464.jpg",
+      "idMeal": "53371"
+    },
+    {
+      "strMeal": "Silken Tofu with Sesame Soy Sauce",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/j9nray1765657692.jpg",
+      "idMeal": "53369"
+    },
+    {
+      "strMeal": "Smoky Lentil Chili with Squash",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/uwxqwy1483389553.jpg",
+      "idMeal": "52784"
+    },
+    {
+      "strMeal": "Spanish Tortilla",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/quuxsx1511476154.jpg",
+      "idMeal": "52872"
+    },
+    {
+      "strMeal": "Spiced tortilla",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/7b862e1763194846.jpg",
+      "idMeal": "53142"
+    },
+    {
+      "strMeal": "Spicy Arrabiata Penne",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
+      "idMeal": "52771"
+    },
+    {
+      "strMeal": "Spicy North African Potato Salad",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/urtwux1486983078.jpg",
+      "idMeal": "52797"
+    },
+    {
+      "strMeal": "Spinach & Ricotta Cannelloni",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wspuvp1511303478.jpg",
+      "idMeal": "52849"
+    },
+    {
+      "strMeal": "Squash linguine",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wxswxy1511452625.jpg",
+      "idMeal": "52866"
+    },
+    {
+      "strMeal": "Stovetop Eggplant With Harissa, Chickpeas, and Cumin Yogurt",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/yqwtvu1487426027.jpg",
+      "idMeal": "52817"
+    },
+    {
+      "strMeal": "Stuffed Bell Peppers with Quinoa and Black Beans",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/b66myb1683207208.jpg",
+      "idMeal": "53067"
+    },
+    {
+      "strMeal": "Sukuma Wiki",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/60o82j1762341177.jpg",
+      "idMeal": "53113"
+    },
+    {
+      "strMeal": "Summer Pistou",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/rqtxvr1511792990.jpg",
+      "idMeal": "52911"
+    },
+    {
+      "strMeal": "Sweet potato salad",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/z458v91763817681.jpg",
+      "idMeal": "53275"
+    },
+    {
+      "strMeal": "Tahini Lentils",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/vpxyqt1511464175.jpg",
+      "idMeal": "52869"
+    },
+    {
+      "strMeal": "Tamiya",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/n3xxd91598732796.jpg",
+      "idMeal": "53026"
+    },
+    {
+      "strMeal": "Tangy cabbage slaw",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/e2g2r21764367568.jpg",
+      "idMeal": "53312"
+    },
+    {
+      "strMeal": "Tangy carrot, cabbage & onion salad",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/dbazbg1763779999.jpg",
+      "idMeal": "53246"
+    },
+    {
+      "strMeal": "Thai coconut & veg broth",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/4k8nzy1763583384.jpg",
+      "idMeal": "53208"
+    },
+    {
+      "strMeal": "Thai pumpkin soup",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/1brbso1763585098.jpg",
+      "idMeal": "53210"
+    },
+    {
+      "strMeal": "Thai rice noodle salad",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/6g3rso1763486069.jpg",
+      "idMeal": "53203"
+    },
+    {
+      "strMeal": "Tofu, greens & cashew stir-fry",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/minfsc1763766806.jpg",
+      "idMeal": "53240"
+    },
+    {
+      "strMeal": "Tortang Talong",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/va668f1683209318.jpg",
+      "idMeal": "53075"
+    },
+    {
+      "strMeal": "Vegetarian Casserole",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/vptwyt1511450962.jpg",
+      "idMeal": "52863"
+    },
+    {
+      "strMeal": "Vegetarian Chilli",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wqurxy1511453156.jpg",
+      "idMeal": "52867"
+    },
+    {
+      "strMeal": "Vegetarian Shakshuka",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/eo0yfb1763600916.jpg",
+      "idMeal": "53222"
+    },
+    {
+      "strMeal": "Vietnamese veg parcels",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/f698g91763768731.jpg",
+      "idMeal": "53241"
+    },
+    {
+      "strMeal": "Vietnamese-style veggie hotpot",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/4uje7l1763762276.jpg",
+      "idMeal": "53236"
+    },
+    {
+      "strMeal": "Yaki Udon",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wrustq1511475474.jpg",
+      "idMeal": "52871"
+    }
+  ]
+}
