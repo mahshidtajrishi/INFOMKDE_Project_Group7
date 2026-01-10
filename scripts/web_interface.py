@@ -551,13 +551,6 @@ HTML_TEMPLATE = """
         {{content}}
     </div>
 
-    <footer>
-        <div class="container text-center">
-            <p><i class="fas fa-graduation-cap me-2"></i>INFOMKDE Semantic Web Project - Utrecht University</p>
-            <p>Built with RDF, SPARQL, OWL, PyKEEN, and FastAPI</p>
-            <p><small>Data sources: Spoonacular API, DBpedia, Wikidata, USDA FoodData Central</small></p>
-        </div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
@@ -1108,7 +1101,7 @@ if __name__ == "__main__":
     print("RECIPE KNOWLEDGE GRAPH WEB INTERFACE")
     print("=" * 70)
     print("\nStarting server...")
-   
+    
     print("=" * 70)
     
     uvicorn.run(app, host="0.0.0.0", port=8000)
