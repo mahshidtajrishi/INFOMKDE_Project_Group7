@@ -1,18 +1,4 @@
-"""
-Script 5: Advanced SPARQL Queries
-==================================
-This script demonstrates advanced SPARQL features as required by the project:
-- Property paths
-- Negation (NOT EXISTS, MINUS)
-- Aggregates (COUNT, SUM, AVG, GROUP BY)
-- OPTIONAL patterns
-- Subqueries
-- CONSTRUCT queries
 
-These are REQUIRED by project guidelines (slide 25):
-"Provide interesting SPARQL queries (the queries need to use 
-constructs such as property paths, negation, aggregates, etc)"
-"""
 
 from rdflib import Graph, Namespace
 import os
@@ -23,7 +9,7 @@ CUISINE = Namespace("http://example.org/cuisine/")
 
 
 def load_graph():
-    """Load the RDF graph."""
+    
     script_dir = os.path.dirname(os.path.abspath(__file__))
     
     # Try enhanced ontology first, fall back to basic
@@ -42,7 +28,7 @@ def load_graph():
 
 
 def run_query(graph, query_name, query, description=""):
-    """Run and display a SPARQL query."""
+   
     print("\n" + "=" * 80)
     print(f"QUERY: {query_name}")
     print("=" * 80)
@@ -151,9 +137,6 @@ def main():
     "Shows recipes with most ingredients")
     
     
-    # ================================================================
-    # NEGATION: NOT EXISTS, MINUS, FILTER NOT EXISTS
-    # ================================================================
     
     run_query(g, "NEGATION 1: Recipes WITHOUT any cuisine specified",
     """
@@ -219,9 +202,7 @@ def main():
     "Finds orphan ingredients (if any)")
     
     
-    # ================================================================
-    # OPTIONAL: Left outer joins
-    # ================================================================
+    
     
     run_query(g, "OPTIONAL 1: Recipes with optional nutrition info",
     """
@@ -268,9 +249,7 @@ def main():
     "Multiple OPTIONAL patterns")
     
     
-    # ================================================================
-    # PROPERTY PATHS: *, +, /, |, ^
-    # ================================================================
+   
     
     run_query(g, "PROPERTY PATH 1: All types of a recipe (using /)",
     """
@@ -346,9 +325,7 @@ def main():
     "Uses ^ for inverse property path (hasIngredient reversed)")
     
     
-    # ================================================================
-    # SUBQUERIES
-    # ================================================================
+    
     
     run_query(g, "SUBQUERY 1: Recipes with above-average calories",
     """
@@ -397,9 +374,7 @@ def main():
     "Subquery finds top ingredients, outer query gets labels")
     
     
-    # ================================================================
-    # COMPLEX RECOMMENDATION QUERIES
-    # ================================================================
+    
     
     run_query(g, "RECOMMENDATION 1: Similar recipes by shared ingredients",
     """
@@ -476,9 +451,7 @@ def main():
     "Finds recipe alternatives with similar nutritional profile")
     
     
-    # ================================================================
-    # CONSTRUCT QUERY (Creates new triples)
-    # ================================================================
+  
     
     print("\n" + "=" * 80)
     print("CONSTRUCT QUERY: Generate similarity relationships")
@@ -510,22 +483,9 @@ def main():
     
     
     print("\n" + "=" * 80)
-    print("ALL ADVANCED QUERIES COMPLETE!")
+   
     print("=" * 80)
-    print("""
-Features demonstrated:
-  ✓ Aggregates: COUNT, AVG, MIN, MAX, SUM
-  ✓ Grouping: GROUP BY, HAVING
-  ✓ Negation: FILTER NOT EXISTS, MINUS
-  ✓ Optional patterns: OPTIONAL
-  ✓ Property paths: /, |, ^
-  ✓ Subqueries: SELECT within SELECT
-  ✓ Complex filters: ABS, STR comparisons
-  ✓ CONSTRUCT queries
-  
-These queries fulfill the project requirement for "interesting SPARQL queries 
-with constructs such as property paths, negation, aggregates, etc."
-""")
+    
 
 
 if __name__ == "__main__":

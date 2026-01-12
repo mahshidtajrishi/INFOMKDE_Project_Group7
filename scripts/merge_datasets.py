@@ -30,5 +30,4 @@ final_data = {
 with open(output, "w", encoding="utf-8") as f:
     json.dump(final_data, f, indent=2, ensure_ascii=False)
 
-print(f"✓ Merged dataset saved to {output}")
 print(f"✓ Total unique recipes: {len(merged)}")
