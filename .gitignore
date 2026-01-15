@@ -1,3 +1,4 @@
+
 # Virtual environment
 .venv/
 
@@ -13,3 +14,9 @@ __pycache__/
 
 output/*.ttl
 output/*.npz
+.devcontainer
+recipesNLG
+.vscode
+unified_recipes
+__pycache__
+.ipynb_checkpoints
