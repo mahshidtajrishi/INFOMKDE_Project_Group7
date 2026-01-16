@@ -37,21 +37,13 @@ async def root():
     return {
         "name": app.title,
         "endpoints": {
-            "recipes": "Return recipes based on filters."
+            f"{app.docs_url}": "API route Documentation.",
+            "/recipes": "Return recipes from graph. No filters yet."
         }
     }
 
 @app.get('/recipes')
-async def get_recipes(
-        name: Optional[str] = Query(None, description="Substring of recipe label"),
-        limit: int = Query(50, ge=1, le=500),
-        offset: int = Query(0, ge=0),
-    ):
-    filter_clause = ""
-    if name:
-        # case‑insensitive filter on rdfs:label
-        filter_clause = f'FILTER(CONTAINS(LCASE(STR(?recipeName)), LCASE("{name}")))'
-
+async def get_recipes():
     query = f"""
     PREFIX food: <http://data.lirmm.fr/ontologies/food#>
     PREFIX schema: <https://schema.org/>
