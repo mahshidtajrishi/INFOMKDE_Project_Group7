@@ -46,7 +46,7 @@ def main():
 
 # app.py (snippet for recommend command)
     if cmd == "recommend":
-        print("\n🍴 Advanced Recipe Recommender 🍴\n")
+        print("\n Advanced Recipe Recommender \n")
 
         avoid_input = input("Ingredients to AVOID (comma-separated, e.g., nuts, egg): ").strip()
         avoid = [i.strip() for i in avoid_input.split(',') if i.strip()]

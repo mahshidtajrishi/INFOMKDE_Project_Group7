@@ -114,14 +114,14 @@ def recommend_recipes(avoid: list = None, must_have: list = None, dietary: list 
         return
 
     if not results:
-        print("❌ No recipes found matching your criteria.")
+        print("No recipes found matching your criteria.")
         print("\nTips:")
         print("  - Try removing some filters")
         print("  - Check if dietary tags exist (try without 'Gluten-Free' or 'Vegan')")
         print("  - Avoid filters might be too strict")
         return
 
-    print(f"✅ Found {len(results)} recipe(s):\n")
+    print(f"Found {len(results)} recipe(s):\n")
     
     for idx, row in enumerate(results, 1):
         name = row['name'].value
@@ -145,7 +145,7 @@ def recommend_recipes(avoid: list = None, must_have: list = None, dietary: list 
 
     # FIXED: Simpler substitution query that actually works
     if avoid:
-        print("\n💡 Suggested substitutions for avoided ingredients:")
+        print("\n Suggested substitutions for avoided ingredients:")
         
         # For each avoided ingredient, suggest common protein alternatives
         substitution_map = {

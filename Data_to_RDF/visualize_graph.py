@@ -74,7 +74,7 @@ class AdvancedGraphVisualizer:
         title_container = ttk.Frame(header_frame, style='Panel.TFrame')
         title_container.pack(pady=20, padx=20)
         
-        ttk.Label(title_container, text="🍽️ Recipe Knowledge Graph Explorer", 
+        ttk.Label(title_container, text="Recipe Knowledge Graph Explorer", 
                  style='Title.TLabel').pack()
         ttk.Label(title_container, text="Visualize and explore recipe relationships", 
                  style='Modern.TLabel', font=('Segoe UI', 11)).pack(pady=(5, 0))
@@ -90,7 +90,7 @@ class AdvancedGraphVisualizer:
         # Controls section header
         controls_header = ttk.Frame(left_panel, style='Panel.TFrame')
         controls_header.pack(fill=tk.X, pady=(10, 15), padx=10)
-        ttk.Label(controls_header, text="⚙️ Graph Controls", style='Section.TLabel').pack(anchor=tk.W)
+        ttk.Label(controls_header, text="Graph Controls", style='Section.TLabel').pack(anchor=tk.W)
         
         # Recipe limit control with better feedback
         limit_frame = ttk.LabelFrame(left_panel, text="Number of Recipes to Display", padding=10)
@@ -131,9 +131,9 @@ class AdvancedGraphVisualizer:
         
         self.layout_var = tk.StringVar(value="spring")
         layouts = [
-            ("🌸 Spring (Default)", "spring", "Natural, organic layout"),
-            ("🌀 Spiral", "spiral", "Circular spiral pattern"),
-            ("🎯 Force-Directed", "kamada_kawai", "Balanced distances")
+            ("Spring (Default)", "spring", "Natural, organic layout"),
+            ("Spiral", "spiral", "Circular spiral pattern"),
+            ("Force-Directed", "kamada_kawai", "Balanced distances")
         ]
         
         for text, value, desc in layouts:
@@ -151,10 +151,10 @@ class AdvancedGraphVisualizer:
         button_frame.pack(fill=tk.X, padx=10, pady=10)
         
         buttons = [
-            ("🔄 Refresh Graph", self.rebuild_graph_async, "Reload data from file"),
-            ("📊 View Statistics", self.show_stats, "Show graph metrics"),
-            ("💾 Export as Image", self.export_image, "Save graph as PNG"),
-            ("ℹ️ Help", self.show_help, "How to use this tool")
+            ("Refresh Graph", self.rebuild_graph_async, "Reload data from file"),
+            ("View Statistics", self.show_stats, "Show graph metrics"),
+            ("Export as Image", self.export_image, "Save graph as PNG"),
+            ("Help", self.show_help, "How to use this tool")
         ]
         
         for text, command, tooltip in buttons:
@@ -163,7 +163,7 @@ class AdvancedGraphVisualizer:
             self.create_tooltip(btn, tooltip)
         
         # Search section
-        search_frame = ttk.LabelFrame(left_panel, text="🔍 Search", padding=10)
+        search_frame = ttk.LabelFrame(left_panel, text="Search", padding=10)
         search_frame.pack(fill=tk.X, padx=10, pady=10)
         
         self.search_var = tk.StringVar()
@@ -175,14 +175,14 @@ class AdvancedGraphVisualizer:
                   command=self.search_graph).pack(fill=tk.X)
         
         # Legend
-        legend_frame = ttk.LabelFrame(left_panel, text="🎨 Node Types", padding=10)
+        legend_frame = ttk.LabelFrame(left_panel, text="Node Types", padding=10)
         legend_frame.pack(fill=tk.X, padx=10, pady=10)
         
         legends = [
-            ("🍽️ Recipes", "#61dafb"),
-            ("🥕 Ingredients", "#ffcc00"),
-            ("📊 Nutrition Info", "#ff69b4"),
-            ("📋 Other", "#cccccc")
+            ("Recipes", "#61dafb"),
+            ("Ingredients", "#ffcc00"),
+            ("Nutrition Info", "#ff69b4"),
+            ("Other", "#cccccc")
         ]
         
         for text, color in legends:
@@ -265,28 +265,9 @@ class AdvancedGraphVisualizer:
         self.info_text.config(state=tk.NORMAL)
         self.info_text.delete(1.0, tk.END)
         
-        welcome = """Welcome to Recipe Knowledge Graph Explorer! 🎉
+        welcome = """Welcome to Recipe Knowledge Graph Explorer! 
 
-This tool helps you visualize and explore recipe data.
 
-🖱️ Getting Started:
-• Click on any node to see detailed information
-• Use the slider to adjust how many recipes to display
-• Try different layout styles for better visualization
-• Search for specific recipes or ingredients
-• Hover over buttons to see helpful tips
-
-📊 What You'll See:
-• Blue nodes = Recipes
-• Yellow nodes = Ingredients  
-• Pink nodes = Nutrition information
-• Gray nodes = Other data
-
-💡 Pro Tips:
-• Start with fewer recipes for clearer visualization
-• Use the Spring layout for most cases
-• Click "View Statistics" to see graph metrics
-• Export your visualization as an image to share
 
 Loading your graph now..."""
 
@@ -295,31 +276,31 @@ Loading your graph now..."""
         
     def show_help(self):
         """Show help dialog"""
-        help_text = """📖 How to Use the Recipe Knowledge Graph Explorer
+        help_text = """How to Use the Recipe Knowledge Graph Explorer
 
-🔍 NAVIGATION:
+NAVIGATION:
 • Click on nodes to view their properties
 • Pan: Click and drag the background
 • Zoom: Use mouse wheel or toolbar buttons
 • Reset view: Click the home icon in toolbar
 
-⚙️ CONTROLS:
+CONTROLS:
 • Recipe Slider: Adjust number of recipes shown
 • Layout Options: Choose visualization style
 • Search: Find specific recipes or ingredients
 • Refresh: Reload graph from file
 
-🎨 COLOR CODING:
+COLOR CODING:
 • Blue circles = Recipe nodes (larger)
 • Yellow circles = Ingredient nodes
 • Pink circles = Nutrition information
 • Gray circles = Other related data
 
-💾 EXPORT:
+EXPORT:
 Click "Export as Image" to save your current
 visualization as a high-quality PNG file.
 
-📊 STATISTICS:
+STATISTICS:
 View detailed metrics about the knowledge graph
 including node counts and relationships.
 
@@ -377,7 +358,7 @@ Need more help? Check the documentation!"""
         
     def rebuild_graph_async(self):
         """Rebuild the graph with current settings"""
-        self.status_bar.config(text="🔄 Building graph... Please wait...")
+        self.status_bar.config(text="Building graph... Please wait...")
         self.master.update()
         
         try:
@@ -436,18 +417,18 @@ Need more help? Check the documentation!"""
                 add_subgraph(recipe)
             
             self.refresh_graph()
-            self.status_bar.config(text=f"✅ Graph loaded: {len(self.nx_graph.nodes())} nodes, {len(self.nx_graph.edges())} connections")
+            self.status_bar.config(text=f"Graph loaded: {len(self.nx_graph.nodes())} nodes, {len(self.nx_graph.edges())} connections")
             
         except Exception as e:
             messagebox.showerror("Error", f"Failed to build graph:\n{str(e)}")
-            self.status_bar.config(text="❌ Error building graph")
+            self.status_bar.config(text="Error building graph")
         
     def refresh_graph(self):
         """Redraw the graph visualization"""
         if not self.nx_graph or len(self.nx_graph.nodes()) == 0:
             return
         
-        self.status_bar.config(text="🎨 Drawing graph...")
+        self.status_bar.config(text="Drawing graph...")
         self.master.update()
         
         self.ax.clear()
@@ -549,7 +530,7 @@ Need more help? Check the documentation!"""
         
         threshold = 0.05
         if min_dist < threshold and closest_node in self.node_info:
-            self.status_bar.config(text=f"👆 {self.node_info[closest_node]['label']}")
+            self.status_bar.config(text=f"{self.node_info[closest_node]['label']}")
         else:
             self.status_bar.config(text="Ready - Click on nodes to view details")
         
@@ -641,7 +622,7 @@ Need more help? Check the documentation!"""
             messagebox.showwarning("Search", "Please enter a search term")
             return
         
-        self.status_bar.config(text=f"🔍 Searching for '{query}'...")
+        self.status_bar.config(text=f"Searching for '{query}'...")
         
         matches = [
             node for node in self.nx_graph.nodes() 
@@ -663,10 +644,10 @@ Need more help? Check the documentation!"""
             else:
                 messagebox.showinfo("Search Results", f"Found: {self.node_info[matches[0]]['label']}")
             
-            self.status_bar.config(text=f"✅ Found {len(matches)} match(es)")
+            self.status_bar.config(text=f"Found {len(matches)} match(es)")
         else:
             messagebox.showinfo("Search Results", f"No results found for '{query}'")
-            self.status_bar.config(text="❌ No matches found")
+            self.status_bar.config(text="No matches found")
     
     def export_image(self):
         """Export the current graph as an image"""
@@ -674,11 +655,11 @@ Need more help? Check the documentation!"""
             filename = "knowledge_graph_export.png"
             self.fig.savefig(filename, dpi=300, bbox_inches='tight', facecolor='white')
             messagebox.showinfo("Export Successful", 
-                f"✅ Graph exported successfully!\n\nSaved as: {filename}\n\nYou can find it in your current directory.")
-            self.status_bar.config(text=f"✅ Exported to {filename}")
+                f"Graph exported successfully!\n\nSaved as: {filename}\n\nYou can find it in your current directory.")
+            self.status_bar.config(text=f"Exported to {filename}")
         except Exception as e:
             messagebox.showerror("Export Error", f"Failed to export image:\n{str(e)}")
-            self.status_bar.config(text="❌ Export failed")
+            self.status_bar.config(text="Export failed")
     
     def show_stats(self):
         """Display graph statistics"""
@@ -691,25 +672,25 @@ Need more help? Check the documentation!"""
         except:
             density = 0
         
-        stats = f"""📊 Knowledge Graph Statistics
+        stats = f"""Knowledge Graph Statistics
 {'═' * 50}
 
-📁 DATA SOURCE:
+  DATA SOURCE:
    {TTL_FILE}
 
-🔢 OVERALL METRICS:
+  OVERALL METRICS:
    • Total RDF Triples: {len(self.rdf_graph):,}
    • Nodes in Current View: {len(self.nx_graph.nodes()):,}
    • Edges in Current View: {len(self.nx_graph.edges()):,}
    • Graph Density: {density:.4f}
 
-🏷️ NODE TYPES:
-   🍽️  Recipes: {len(self.all_nodes_by_type['recipe'])}
-   🥕  Ingredients: {len(self.all_nodes_by_type['ingredient'])}
-   📊  Nutrition Info: {len(self.all_nodes_by_type['nutrition'])}
-   📋  Other: {len(self.all_nodes_by_type['other'])}
+ NODE TYPES:
+      Recipes: {len(self.all_nodes_by_type['recipe'])}
+      Ingredients: {len(self.all_nodes_by_type['ingredient'])}
+      Nutrition Info: {len(self.all_nodes_by_type['nutrition'])}
+      Other: {len(self.all_nodes_by_type['other'])}
 
-💡 TIP: Adjust the recipe slider to explore more or less data!
+   TIP: Adjust the recipe slider to explore more or less data!
 """
         messagebox.showinfo("Knowledge Graph Statistics", stats)
 
