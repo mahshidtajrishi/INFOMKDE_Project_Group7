@@ -1,0 +1,32 @@
+services:
+  fuseki:
+    image: secoresearch/fuseki
+    container_name: fuseki
+    ports:
+      - "3030:3030"
+    volumes:
+      - fuseki-data:/fuseki-base/databases
+      - ./unified_recipes/recipe_recommendation_with_axioms_v4.ttl:/data/recipe_recommendation_with_axioms_v4.ttl
+    environment:
+      - ADMIN_PASSWORD=admin
+      - FUSEKI_DATASET_1=dataset
+      - JAVA_OPTIONS=-Xms4g -Xmx6g
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: recipe-recommendation:latest
+    container_name: recipe-recommendation-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/api
+    depends_on:
+      - fuseki
+    environment:
+      - SPARQL_ENDPOINT=http://fuseki:3030/recipes-graph/sparql
+    restart: on-failure
+
+volumes:
+  fuseki-data:
