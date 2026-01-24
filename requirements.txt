@@ -1,0 +1,8 @@
+rdflib
+owlrl
+pandas
+recordlinkage
+tqdm
+fastapi[standard]
+uvicorn
+SPARQLWrapper
