@@ -1,5 +1,8 @@
 # INFOMKDE_Project_Group7
 
+# Knowledge graph files
+- https://drive.google.com/drive/folders/1HsQL__CT8iazirgx_wh-2V3k3mnGaUom?usp=sharing
+
 
 ## API Documentation
 

@@ -1,3 +1,8 @@
 .env
 __pycache__/
 *.pyc
+recipesNLG
+spoonacular_data
+unified_recipes
+.vscode
+.devcontainer
