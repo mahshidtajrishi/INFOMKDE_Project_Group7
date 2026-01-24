@@ -59,3 +59,17 @@ docker compose up -d
 **Run with:** `python scripts/web_interface.py`
 
 After starting Docker services with `docker compose up -d`, navigate to the scripts folder and run the web interface. On Windows, open PowerShell, activate the virtual environment using `.\.venv\Scripts\Activate.ps1`, then change to the scripts directory with `cd scripts` and start the application with `python web_interface.py`. On Linux or Mac, use `source .venv/bin/activate` instead to activate the virtual environment. Once the server starts, you should see a message indicating that Uvicorn is running on http://127.0.0.1:8000. Open your browser and visit http://localhost:8000 to access the application.
+
+
+---
+
+## Team Members
+
+| Name | Contributions |
+|------|---------------|
+| Mahshid Jafar Tajrishi | Data collection/cleaning, RDF conversion, Ontology, SPARQL queries, Tkinter Visualization |
+| Leontina van Kampen | SPARQL queries,  |
+| Radis Marios Toumpalidis | RecipesNLG data collection, RDF conversion, Graph linking, Graph Database & API system |
+| Sanjana Somashekar | Spoonacular API integration, RDF conversion, External KB linking, Graph embeddings, Web interface |
+
+---
