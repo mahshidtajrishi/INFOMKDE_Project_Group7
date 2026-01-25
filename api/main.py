@@ -43,31 +43,43 @@ async def root():
     }
 
 @app.get('/recipes')
-async def get_recipes():
-    query = f"""
-    PREFIX food: <http://data.lirmm.fr/ontologies/food#>
-    PREFIX schema: <https://schema.org/>
-    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+async def get_recipes(name: str = None):
+    # Build the base SPARQL query
+    query_parts = [
+        """
+        PREFIX food: <http://data.lirmm.fr/ontologies/food#>
+        PREFIX schema: <https://schema.org/>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-    SELECT ?recipe 
-		?recipeName 
-        (GROUP_CONCAT(DISTINCT ?ingL; separator=", ") AS ?ingredients) 
-        ?instructions
-    WHERE {{
-        ?recipe a food:Recipe ;
-                rdfs:label ?recipeName ;
-                food:ingredient ?ing ;
-                schema:recipeInstructions ?instructions .
-        ?ing rdfs:label ?ingL
-    }}
-    GROUP BY ?recipe ?recipeName ?instructions
-    ORDER BY ?recipe ?recipeName
-    """
+        SELECT ?recipe 
+            ?recipeName 
+            (GROUP_CONCAT(DISTINCT ?ingL; separator=", ") AS ?ingredients) 
+            ?instructions
+        WHERE {
+            ?recipe a food:Recipe ;
+                    rdfs:label ?recipeName ;
+                    food:ingredient ?ing ;
+                    schema:recipeInstructions ?instructions .
+            ?ing rdfs:label ?ingL
+        """
+    ]
+    
+    # Add filter if name parameter is provided
+    if name:
+        query_parts.append(f'    FILTER regex(?recipeName, "{name}", "i")')
+    
+    query_parts.append("""
+        }
+        GROUP BY ?recipe ?recipeName ?instructions
+        ORDER BY ?recipe ?recipeName
+    """)
+    
+    query = "\n".join(query_parts)
     
     try:
         sparql.setQuery(query)
         results = sparql.query().convert()
-        rows = recipe_row2json(results["results"]["bindings"]) # type:ignore
+        rows = recipe_row2json(results["results"]["bindings"])
         return rows
     except Exception as e:
         raise HTTPException(status_code=500, detail=traceback.format_exc())
