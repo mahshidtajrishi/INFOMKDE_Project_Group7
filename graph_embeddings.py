@@ -40,7 +40,7 @@ def load_rdf_as_triples(rdf_path):
     
     # Convert RDF to simple triples
     triples = []
-    entity_labels = {}  # Map URIs to human-readable labels
+    entity_labels = {}  
     
     # First pass: collect labels
     for s, p, o in g.triples((None, RDFS.label, None)):
@@ -51,8 +51,7 @@ def load_rdf_as_triples(rdf_path):
         if str(s) not in entity_labels:
             entity_labels[str(s)] = str(o)
     
-    # Second pass: extract meaningful triples for embedding
-    # We focus on object properties (entity-to-entity relationships)
+    
     relations_to_include = [
         str(FOOD.ingredient),           # NEW: food:ingredient
         str(SCHEMA.recipeCuisine),      # NEW: schema:recipeCuisine
@@ -64,11 +63,10 @@ def load_rdf_as_triples(rdf_path):
     ]
     
     for s, p, o in g:
-        # Skip literals (we only want entity-entity relationships for embeddings)
+        # Skip literals 
         if isinstance(o, Literal):
             continue
-        
-        # Skip blank nodes for cleaner embeddings
+       
         if str(s).startswith("_:") or str(o).startswith("_:"):
             continue
             
