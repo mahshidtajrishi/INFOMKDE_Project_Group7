@@ -83,7 +83,7 @@ After starting Docker services with `docker compose up -d`, navigate to the scri
 | Name | Contributions |
 |------|---------------|
 | Mahshid Jafar Tajrishi | Data collection/cleaning, RDF conversion, Ontology, SPARQL queries, Tkinter Visualization |
-| Leontina van Kampen | SPARQL queries,  |
+| Leontina van Kampen | Ontology; creating classes & axioms, SPARQL queries; created 10 SPARQL queries  |
 | Radis Marios Toumpalidis | RecipesNLG data collection, RDF conversion, Graph linking, Graph Database & API system |
 | Sanjana Somashekar | Spoonacular API integration, RDF conversion, External KB linking, Graph embeddings, Web interface |
 
