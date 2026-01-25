@@ -168,24 +168,43 @@ def find_exact_matches(ingredients):
 
 def find_fuzzy_matches(ingredients, threshold=0.8):
     """
-    Find fuzzy matches using string similarity.
-    This is a placeholder - you can implement Levenshtein distance or other methods.
+    Find fuzzy matches using Levenshtein distance.
 
     Returns:
-        list: [(local_uri, external_uri, confidence, match_type), ...]
+        list: [(local_uri, external_uri, confidence, match_type, description), ...]
     """
-    print(f"\nFinding fuzzy matches (threshold: {threshold})...")
-
+    from Levenshtein import distance as levenshtein_distance
+    
     matches = []
-
-    # TODO: Implement fuzzy matching
-    # You could use libraries like:
-    # - python-Levenshtein
-    # - fuzzywuzzy
-    # - rapidfuzz
-
-    print(f"  Found {len(matches):,} fuzzy matches (placeholder)")
-
+    checked_pairs = set()
+    
+    # Combine external sources
+    external = ingredients['dbpedia'] + ingredients['wikidata'] + ingredients['obo']
+    
+    for local_uri, local_label, local_norm in ingredients['local']:
+        for ext_uri, ext_label, ext_norm in external:
+            pair = tuple(sorted([local_uri, ext_uri]))
+            if pair in checked_pairs:
+                continue
+            checked_pairs.add(pair)
+            
+            # Calculate similarity
+            dist = levenshtein_distance(local_norm, ext_norm)
+            max_len = max(len(local_norm), len(ext_norm))
+            if max_len == 0:
+                continue
+            similarity = 1.0 - (dist / max_len)
+            
+            if similarity >= threshold:
+                matches.append((
+                    local_uri,
+                    ext_uri,
+                    similarity,
+                    'fuzzy_levenshtein',
+                    f'"{local_label}" ↔ "{ext_label}"'
+                ))
+    
+    print(f"  Found {len(matches):,} fuzzy matches")
     return matches
 
 

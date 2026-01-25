@@ -3,6 +3,21 @@
 # Knowledge graph files
 - https://drive.google.com/drive/folders/1HsQL__CT8iazirgx_wh-2V3k3mnGaUom?usp=sharing
 
+## Graph Unification
+### Phase 1 Merge
+- Loads all ttl files containing the generated knowledge graphs from the 3 sources
+- Unifies them into one rdflib.Graph object using the `+=` operator without modifications
+- Adds metadata about the unified dataset
+
+### Phase 2 Entity Linkage
+- Extract ingredients from all sources and distinguishes between different vocabularies
+- Finds exact or fuzzy (levenshtein distance) mappings and exports them into a mappiings graph(mechanism needs improving)
+
+### Phase 3 Normalization
+- Parses all entities found in graph (recipes, ingredients)
+- Ensures all recipes are instances of food:Recipe
+- Extracts ingredients from nested structures (RecipesNLG's food:hasIngredient → food:ingredient chains and Spoonacular's ns1:ingredientUsage → ns1:usesIngredient chains) and adds simple direct links
+- Only adds new triples, never removes anything
 
 ## API Documentation
 
